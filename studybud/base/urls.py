@@ -15,12 +15,8 @@ urlpatterns = [
     path('update-room/<str:pk>/', views.updateRoom, name="update-room"),
     path('delete-room/<str:pk>/', views.deleteRoom, name="delete-room"),
     path('delete-massage/<str:pk>/', views.deleteMessage, name="delete-message"),
-    path('update-user', views.updateUser, name="update-user"),
+    path('update-user/', views.updateUser, name="update-user"),
+    path('topics/', views.updateUser, name="topics"),
+    path('activity/', views.updateUser, name="activity"),
 
 ]
-
-
-'''
-예외처리
-
-'''
