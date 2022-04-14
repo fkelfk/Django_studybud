@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from base.models import Room
-from .serializers import Roomserializer
-from studybud.base.api import serializers
+from .serializers import RoomSerializer
+from base.api import serializers
 
 
 @api_view(['GET'])
@@ -14,14 +14,16 @@ def getRoutes(request):
     ]
     return Response(routes)
 
+
 @api_view(['GET'])
 def getRooms(request):
     rooms = Room.objects.all()
-    serializers = Roomserializer(rooms, many=True)
-    return Response(serializers.data)
+    serializer = RoomSerializer(rooms, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
-def getRooms(request, pk):
+def getRoom(request, pk):
     room = Room.objects.get(id=pk)
-    serializers = Roomserializer(room, many=False) 
-    return Response(serializers.data)
+    serializer = RoomSerializer(room, many=False)
+    return Response(serializer.data)
